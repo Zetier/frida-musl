@@ -1,0 +1,12 @@
+diff --git a/gum/backend-linux/gummemory-linux.c b/gum/backend-linux/gummemory-linux.c
+index fbe50b87..77160950 100644
+--- a/gum/backend-linux/gummemory-linux.c
++++ b/gum/backend-linux/gummemory-linux.c
+@@ -26,6 +26,7 @@
+ # define GUM_SYS_PROCESS_VM_READV   310
+ # define GUM_SYS_PROCESS_VM_WRITEV  311
+ #elif defined (HAVE_ARM)
++#include <linux/unistd.h>
+ # define GUM_SYS_PROCESS_VM_READV   (__NR_SYSCALL_BASE + 376)
+ # define GUM_SYS_PROCESS_VM_WRITEV  (__NR_SYSCALL_BASE + 377)
+ #elif defined (HAVE_ARM64)

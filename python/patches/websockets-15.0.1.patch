@@ -1,0 +1,22 @@
+diff -Naur websockets-15.0.1.org/setup.py websockets-15.0.1/setup.py
+--- websockets-15.0.1.org/setup.py	2025-03-05 14:43:45.000000000 -0500
++++ websockets-15.0.1/setup.py	2025-03-16 08:49:50.102136190 -0400
+@@ -30,10 +30,18 @@
+         )
+     ]
+ 
++def get_platname():
++    return "linux_arm"
++
+ # Static values are declared in pyproject.toml.
+ setuptools.setup(
+     version=version,
+     long_description=long_description,
+     long_description_content_type="text/x-rst",
+     ext_modules=ext_modules,
++    options={
++        "bdist_wheel": {
++            "plat_name": get_platname(),
++        },
++    },    
+ )

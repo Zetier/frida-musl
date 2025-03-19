@@ -1,0 +1,38 @@
+diff --git a/src/linux/frida-helper-backend.vala b/src/linux/frida-helper-backend.vala
+index 9839fbff..6fad340a 100644
+--- a/src/linux/frida-helper-backend.vala
++++ b/src/linux/frida-helper-backend.vala
+@@ -1096,7 +1096,7 @@ namespace Frida {
+ #else
+ 			bool same_libc = remote_libc != null && remote_libc.identity == local_libc.identity;
+ #endif
+-			if (same_libc) {
++			if (false) {
+ 				remote_mmap = remote_libc.base_address + mmap_offset;
+ 				remote_munmap = remote_libc.base_address + munmap_offset;
+ 			}
+diff --git a/src/linux/frida-syscall.h b/src/linux/frida-syscall.h
+index e9dd30d6..24046d95 100644
+--- a/src/linux/frida-syscall.h
++++ b/src/linux/frida-syscall.h
+@@ -22,6 +22,7 @@
+ # define SYS_pidfd_open         434
+ # define SYS_pidfd_getfd        438
+ #elif defined (HAVE_ARM)
++#include <linux/unistd.h>
+ # define SYS_process_vm_readv   (__NR_SYSCALL_BASE + 376)
+ # define SYS_process_vm_writev  (__NR_SYSCALL_BASE + 377)
+ # define SYS_memfd_create       (__NR_SYSCALL_BASE + 385)
+diff --git a/src/linux/helpers/Makefile b/src/linux/helpers/Makefile
+index 860ae080..91fc7e44 100644
+--- a/src/linux/helpers/Makefile
++++ b/src/linux/helpers/Makefile
+@@ -15,7 +15,7 @@ crossfile := $(BUILDDIR)/frida-$(host_machine).txt
+ 
+ build: ext/linux/tools/include/nolibc/nolibc.h
+ 	rm -rf build
+-	$(MESON) setup --cross-file $(crossfile) -Db_lto=true build
++	$(MESON) setup --cross-file $(crossfile) -Db_lto=false build
+ 	$(MESON) compile -C build
+ 	cp build/bootstrapper.bin bootstrapper-$(host_arch).bin
+ 	cp build/loader.bin loader-$(host_arch).bin

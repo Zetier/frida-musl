@@ -1,0 +1,40 @@
+diff -Naur bash-5.2.15-org/pathnames.h.in bash-5.2.15/pathnames.h.in
+--- bash-5.2.15-org/pathnames.h.in	2009-01-04 14:32:40.000000000 -0500
++++ bash-5.2.15/pathnames.h.in	2023-04-10 22:42:06.719103691 -0400
+@@ -22,10 +22,10 @@
+ #define _PATHNAMES_H_
+ 
+ /* The default file for hostname completion. */
+-#define DEFAULT_HOSTS_FILE "/etc/hosts"
++#define DEFAULT_HOSTS_FILE TGTINST "/etc/hosts"
+ 
+ /* The default login shell startup file. */
+-#define SYS_PROFILE "/etc/profile"
++#define SYS_PROFILE TGTINST "/etc/profile"
+ 
+ /* The default location of the bash debugger initialization/startup file. */
+ #define DEBUGGER_START_FILE	"@DEBUGGER_START_FILE@"
+diff -Naur bash-5.2.15-org/variables.c bash-5.2.15/variables.c
+--- bash-5.2.15-org/variables.c	2022-07-18 14:31:35.000000000 -0400
++++ bash-5.2.15/variables.c	2023-04-10 22:43:13.031058627 -0400
+@@ -549,7 +549,7 @@
+ 
+   /* Now make our own defaults in case the vars that we think are
+      important are missing. */
+-  temp_var = set_if_not ("PATH", DEFAULT_PATH_VALUE);
++  temp_var = bind_variable("PATH", DEFAULT_PATH_VALUE, 0);
+   temp_var = set_if_not ("TERM", "dumb");
+ 
+ #if defined (__QNX__)
+@@ -616,8 +616,9 @@
+   bind_variable ("OPTERR", "1", 0);
+   sh_opterr = 1;
+ 
+-  if (login_shell == 1 && posixly_correct == 0)
+-    set_home_var ();
++  /* if (login_shell == 1 && posixly_correct == 0)
++    set_home_var (); */
++  temp_var = bind_variable ("HOME", TGTHOME, 0);
+ 
+   /* Get the full pathname to THIS shell, and set the BASH variable
+      to it. */

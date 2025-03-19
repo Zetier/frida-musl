@@ -1,0 +1,33 @@
+diff -Naur binutils-2.40-old/gprofng/libcollector/iotrace.c binutils-2.40/gprofng/libcollector/iotrace.c
+--- binutils-2.40-old/gprofng/libcollector/iotrace.c	2023-01-13 19:00:00.000000000 -0500
++++ binutils-2.40/gprofng/libcollector/iotrace.c	2023-04-30 18:55:42.265015604 -0400
+@@ -1443,7 +1443,7 @@
+ /*------------------------------------------------------------- creat64 */
+ #if WSIZE(32)
+ int
+-creat64 (const char *path, mode_t mode)
++patch_unused_creat64 (const char *path, mode_t mode)
+ {
+   int *guard;
+   int fd;
+@@ -2550,7 +2550,7 @@
+ 
+ #else
+ ssize_t
+-pwrite64 (int fildes, const void *buf, size_t nbyte, off64_t offset)
++patch_unused_pwrite64 (int fildes, const void *buf, size_t nbyte, off64_t offset)
+ {
+   int *guard;
+   if (NULL_PTR (pwrite64))
+diff -Naur binutils-2.40-old/gprofng/libcollector/mmaptrace.c binutils-2.40/gprofng/libcollector/mmaptrace.c
+--- binutils-2.40-old/gprofng/libcollector/mmaptrace.c	2023-01-13 19:00:00.000000000 -0500
++++ binutils-2.40/gprofng/libcollector/mmaptrace.c	2023-04-30 18:49:59.962242798 -0400
+@@ -1497,7 +1497,7 @@
+ #if WSIZE(32)       /* mmap64 only defined for non-64-bit */
+ 
+ void *
+-mmap64 (void *start, size_t length, int prot, int flags, int fd, off64_t offset)
++patch_unused_mmap64 (void *start, size_t length, int prot, int flags, int fd, off64_t offset)
+ {
+   if (NULL_PTR (mmap64))
+     init_mmap_intf ();

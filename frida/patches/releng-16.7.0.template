@@ -1,0 +1,12 @@
+diff --git a/deps.py b/deps.py
+index ec50108..c4c0fbd 100755
+--- a/deps.py
++++ b/deps.py
+@@ -560,6 +560,7 @@ class Builder:
+                              *machine_file_opts,
+                              f"-Dprefix={prefix}",
+                              f"-Dlibdir={libdir}",
++                             f"-Dc_link_args=-LFRIDA_MUSL_TOOLCHAIN_LIBDIR",
+                              *pc_opts,
+                              f"-Ddefault_library={self._default_library}",
+                              f"-Dbackend=ninja",

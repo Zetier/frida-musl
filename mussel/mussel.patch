@@ -1,0 +1,22 @@
+diff --git a/mussel b/mussel
+index 00f5ec9..42252cc 100755
+--- a/mussel
++++ b/mussel
+@@ -47,7 +47,7 @@ isl_ver=0.27
+ linux_ver=6.11.8
+ mpc_ver=1.3.1
+ mpfr_ver=4.2.1
+-musl_ver=1.2.5
++musl_ver=1.1.16
+ pkgconf_ver=2.3.0
+ 
+ # ----- Package URLs ----- #
+@@ -101,7 +101,7 @@ elif [ "$checksum_command" = "sha256sum" ] || [ "$checksum_command" = "openssl"
+   linux_sum=aee8a844fe152420bece70ffae8525b9b23089aa4da31fa32f30e1859bf93c3d
+   mpc_sum=ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8
+   mpfr_sum=277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2
+-  musl_sum=a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4
++  musl_sum=937185a5e5d721050306cf106507a006c3f1f86d86cd550024ea7be909071011
+   pkgconf_sum=3a9080ac51d03615e7c1910a0a2a8df08424892b5f13b0628a204d3fcce0ea8b
+ fi
+ 

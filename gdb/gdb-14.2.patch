@@ -1,0 +1,23 @@
+diff -Naur gdb-14.2-org/gdb/mips-linux-nat.c gdb-14.2/gdb/mips-linux-nat.c
+--- gdb-14.2-org/gdb/mips-linux-nat.c	2024-03-03 00:55:00.000000000 -0500
++++ gdb-14.2/gdb/mips-linux-nat.c	2024-04-24 06:55:58.024112469 -0400
+@@ -31,7 +31,6 @@
+ #include "gdb_proc_service.h"
+ #include "gregset.h"
+ 
+-#include <sgidefs.h>
+ #include "nat/gdb_ptrace.h"
+ #include <asm/ptrace.h>
+ #include "inf-ptrace.h"
+diff -Naur gdb-14.2-org/gdbserver/linux-low.cc gdb-14.2/gdbserver/linux-low.cc
+--- gdb-14.2-org/gdbserver/linux-low.cc	2024-03-03 00:55:00.000000000 -0500
++++ gdb-14.2/gdbserver/linux-low.cc	2024-04-24 07:05:34.412133659 -0400
+@@ -5482,6 +5482,8 @@
+   /* Send a SIGINT to the process group.  This acts just like the user
+      typed a ^C on the controlling terminal.  */
+   int res = ::kill (-signal_pid, SIGINT);
++  if (res != 0)
++      ::kill (signal_pid, SIGINT);
+   if (res == -1)
+     warning (_("Sending SIGINT to process group of pid %ld failed: %s"),
+ 	     signal_pid, safe_strerror (errno));
