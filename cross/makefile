@@ -15,7 +15,7 @@ $(TCDIR): $(TCTAR)
 	tar xf $(TCTAR)
 	cp -a config.mak $(TCDIR)
 
-do-build-all: $(ARCHDIR)
+do-build-all:
 	cd $(TCDIR) && make -j $(MKJ) $(TCREDIR)
 	cd $(TCDIR) && make install $(TCREDIR)
 

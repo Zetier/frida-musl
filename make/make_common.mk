@@ -12,7 +12,7 @@ dnuzd   = @$(call crdir,$(CMN_DNLD) $(2))	\
 dnuzi    = @$(call crdir,$(CMN_DNLD))	\
 		$(call dnldif,$(1))				\
 		unzip $(CMN_DNLD)/$(notdir $(1))
-gittar   = $(call crdir,$(CMN_DNLD)) \
+gittar   = @$(call crdir,$(CMN_DNLD)) \
 		if [ ! -f $(1) ]; then \
 		( cd $(CMN_DNLD) && git clone --recurse-submodules $(4) ); \
 		( cd $(CMN_DNLD)/$(2) && git checkout $(3) -b $(2)-$(3) ); \
