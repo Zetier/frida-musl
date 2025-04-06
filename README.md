@@ -17,7 +17,7 @@ As we have elaborated on earlier, we have the following requirements for the too
 - Latest GCC. We want to use a new GCC release, otherwise we might not be successful building the latest version of Frida and its dependencies. 
 This toolchain is one-of-a-kind; combining the latest GCC with quite an old musl libc, which targets a vintage 32-bit ARM architecture.
 
-## TLDR; type 'make' a couple of times
+## TL;DR: type 'make' a couple of times
 - 'cross' folder; the toolchain configuration and makefile
 - Top-level Makefile; recursive makefile to build all Frida components.
 
@@ -30,4 +30,4 @@ $ cd frida-musl && make && make install
 ```
 
 ## More documentation
-More details are provided in the blog artcle found here: https://zetier.com/blog/
+More details are provided in the blog artcle found here: https://zetier.com/blog/openwrt-on-rpi-hacking
