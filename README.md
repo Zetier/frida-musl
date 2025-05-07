@@ -30,4 +30,4 @@ $ cd frida-musl && make && make install
 ```
 
 ## More documentation
-More details are provided in the blog artcle found here: https://zetier.com/blog/openwrt-on-rpi-hacking
+More details are provided in the blog artcle found here: https://zetier.com/openwrt-on-rpi-hacking
